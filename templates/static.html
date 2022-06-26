@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistika</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+</head>
+<body>
+<section style="background: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1); width: 100%; height: 100%;">
+  <nav class="navbar navbar-expand-lg bg-dark ">
+        <div class="container ">
+          <a class="navbar-brand text-white" href="{% url 'index-page' %}">EIQZONA</a>
+          <button class="navbar-toggler border-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active text-white fs-5" href="{% url 'static' %}">"Namangan" Erkin Iqtisodiy Hududning Statistik ma'lumotlari</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active text-white fs-5" href="/admin/" target="_blank">Kiritish</a>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </nav>
+  <h1 class="text-center mt-5">STATISTIKA</h1>
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12 col-sm-12 col-12 my-2"><img class="img-fluid" src="{% static 'images/1.jpg'%}" alt="#"></div>
+          <div class="col-md-12 col-sm-12 col-12 my-2"><img class="img-fluid" src="{% static 'images/2.jpg'%}" alt="#"></div>
+          <div class="col-md-12 col-sm-12 col-12 my-2"><img class="img-fluid" src="{% static 'images/3.jpg'%}" alt="#"></div>
+          <div class="col-md-12 col-sm-12 col-12 my-2"><img class="img-fluid" src="{% static 'images/4.jpg'%}" alt="#"></div>
+          <div class="col-md-12 col-sm-12 col-12 my-2"><img class="img-fluid" src="{% static 'images/5.jpg'%}" alt="#"></div>
+          <div class="col-md-12 col-sm-12 col-12 my-2"><img class="img-fluid" src="{% static 'images/6.jpg'%}" alt="#"></div>
+          <div class="col-md-12 col-sm-12 col-12 my-2"><img class="img-fluid" src="{% static 'images/7.jpg'%}" alt="#"></div>
+          <div class="col-md-12 col-sm-12 col-12 my-2"><img class="img-fluid" src="{% static 'images/8.jpg'%}" alt="#"></div>
+          <div class="col-md-12 col-sm-12 col-12 my-2"><img class="img-fluid" src="{% static 'images/9.jpg'%}" alt="#"></div>
+          <div class="col-md-12 col-sm-12 col-12 my-2"><img class="img-fluid" src="{% static 'images/10.jpg'%}" alt="#"></div>
+          <div class="col-md-12 col-sm-12 col-12 my-2"><img class="img-fluid" src="{% static 'images/11.jpg'%}" alt="#"></div>
+          <div class="col-md-12 col-sm-12 col-12 my-2"><img class="img-fluid" src="{% static 'images/12.jpg'%}" alt="#"></div>
+          <div class="col-md-12 col-sm-12 col-12 my-2"><img class="img-fluid" src="{% static 'images/13.jpg'%}" alt="#"></div>
+          <div class="col-md-12 col-sm-12 col-12 my-2"><img class="img-fluid" src="{% static 'images/14.jpg'%}" alt="#"></div>
+      </div>
+  </div>
+</section>
+
+
+<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

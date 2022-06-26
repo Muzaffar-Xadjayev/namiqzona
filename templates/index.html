@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax</title>
+</head>
+<style>
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: linear-gradient(to right top, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+  }
+  ::-webkit-scrollbar-thumb {
+    background:rgba(0,0,0,0.2);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background:rgba(0,0,0,0.3);
+  }
+
+  .height-100{
+    height:100vh;
+  }
+</style>
+<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+<body>
+<section class="main" style="background: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1); width: 100%; height: auto;">
+  <nav class="navbar navbar-expand-lg bg-dark ">
+    <div class="container ">
+      <a class="navbar-brand text-white" href="{% url 'index-page' %}">EIQZONA</a>
+      <button class="navbar-toggler border-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-white fs-5" href="{% url 'static' %}">"Namangan" Erkin Iqtisodiy Hududning Statistik ma'lumotlari</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white fs-5" href="admin/" target="_blank">Kiritish</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+  <div class="container py-md-5 py-3 height-100" id="section">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-12"><h1 class="text-light text-center">Namangan viloyati hududida tashkil etilgan erkin iqtisodiy zonalar haqida statistik ma'lumotlar</h1></div>
+    </div>
+    <div class="row my-md-1 my-2">
+      <div class="col-md-4 col-sm-12 col-12">
+        <h5 class="text-danger ">VILOYAT</h5>
+        <select onchange="load_zone()" name="selectregion" id="selectRegion" class="form-select">
+          <option value="">Viloyatni Tanlang</option>
+          {% for country in countries %}
+          <option value="{{country.id}}">{{country.name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-4 col-sm-12 col-12">
+        <h5 class="text-danger">Kichik Iqtisodiy Zona</h5>
+        <select name="selectzone" onchange="load_org()" id="selectZone" class="form-select">
+
+        </select>
+      </div>
+      <div class="col-md-4 col-sm-12 col-12">
+        <h5 class="text-danger">Tashkilotlar</h5>
+        <select name="selectregion" onchange="load_post()" id="selectOrg" class="form-select">
+
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="my-2" id="post">
+
+  </div>
+  <hr>
+  <footer class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12 col-12">
+        <p>&copy 2021-2022 Barcha huquqlar himoyalangan <a href="https://t.me/NITC7" target="_blank">Muzaffar</a></p>
+      </div>
+      <div class="col-md-6 col-sm-12 col-12 text-end">
+        <a href="#">Yuqoriga</a>
+      </div>
+    </div>
+  </footer>
+</section>
+
+
+
+<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  function load_zone(){
+    let region_id = document.getElementById('selectRegion').value;
+    $.ajax({
+      url: "{% url 'load-region' %}",
+      type: "get",
+      data: {country:region_id},
+      success: function(data){
+        $('#selectZone').html(data)
+
+      }
+    })
+  }
+
+  function load_org(){
+    let region_id = document.getElementById('selectZone').value;
+    $.ajax({
+      url: "{% url 'load-org' %}",
+      type: "get",
+      data: {tashkilot:region_id},
+      success: function(data){
+        $('#selectOrg').html(data)
+      }
+    })
+  }
+
+
+  function load_post(){
+    let selectregion = document.getElementById('selectOrg').value;
+    $.ajax({
+      url: "{% url 'load-post' %}",
+      type: "get",
+      data: {selectregion:selectregion},
+      success: function(data){
+          $('#post').html(data)
+          $('#section').removeClass('height-100')
+      }
+    })
+  }
+
+</script>
+</body>
+</html>
